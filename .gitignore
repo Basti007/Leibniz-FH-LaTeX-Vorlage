@@ -10,4 +10,7 @@
 *.bbl
 *.blg
 *.toc
+*.fls
+*.fdb_latexmk
+*.lol
 _minted-report/
