@@ -1,0 +1,13 @@
+*.aux
+*.bcf
+*.lof
+*.log
+*.lot
+*.out
+*.pdf
+*.xml
+*.roc
+*.bbl
+*.blg
+*.toc
+_minted-report/

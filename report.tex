@@ -1,0 +1,111 @@
+% !TeX program = xelatex
+\documentclass[11pt, a4paper]{article}
+
+% packages
+\include{package_includes}
+
+% document setup
+\include{document_setup}
+
+\begin{document}
+
+    % Generic Title Page
+    \include{title_page_new}
+
+    \section*{Sperrvermerk}
+    Hier kann ein Sperrvermerk eingefügt werden.
+    \thispagestyle{empty}    
+    \cleardoublepage
+
+    % Table of Contents
+    \setcounter{page}{1}
+    \pagenumbering{roman}
+    \phantomsection % for use with package hyperref
+    \tableofcontents
+    \addtocontents{toc}{\protect\thispagestyle{fancy}}
+    \cleardoublepage
+
+    % List of Abbreviations
+    \phantomsection % for use with package hyperref
+    \addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+    \section*{Abkürzungsverzeichnis}
+    \thispagestyle{fancy}
+	\begin{acronym}[\hspace{4cm}]
+		\acro{zf}[ZF]{ZF Friedrichshafen AG}
+	\end{acronym}
+    \cleardoublepage
+
+    % List of Figures
+    \phantomsection
+    \addcontentsline{toc}{section}{\listfigurename}
+    \listoffigures
+    \thispagestyle{fancy}
+    \cleardoublepage
+
+    % List of Tables
+    \phantomsection % for use with package hyperref
+    \addcontentsline{toc}{section}{\listtablename}
+    \listoftables
+    \thispagestyle{fancy}
+    \cleardoublepage
+
+    % List of code listings
+    \phantomsection % for use with package hyperref
+    \addcontentsline{toc}{section}{Quellcodeverzeichnis}
+    \section*{Quellcodeverzeichnis}
+    \listoflistings
+    \thispagestyle{fancy}
+    \cleardoublepage
+
+    % Content
+    \setcounter{page}{1}
+    \pagenumbering{arabic}
+    % sections and content go here...
+    \section{Einleitung}
+    \subsection{Motivation}
+    In vielen Bereichen der Informationstechnik ist es häufig der Fall, dass sich eine rapide Entwicklung vollzieht. Sei es eine Entwicklung der Hardware, ständige Verbesserungen der Software oder auch die Anpassung und Neuentwicklung von Programmiersprachen. Besonders der letzte Punkt ist in der heutigen Zeit von großer Bedeutung. Die Wahl der Programmiersprache kann maßgeblich über den Erfolg eines Projektes entscheiden.\newlineindent
+    Nach einigen Jahren Berufserfahrung stellt sich die Frage, weshalb in Embedded\--Sys\-te\-men, insbesondere im Automobilbereich, immer noch C als Programmiersprache verwendet wird und nicht eine modernere und weiterentwickelte Sprache wie zum Beispiel C++.
+    \begin{listing}[!ht]
+        \inputminted{cpp}{code/c-benchmark-setup.c}
+        \caption{Codekonstrukt für Benchmarks in C}
+        \label{listing:1}
+    \end{listing}
+    \subsection{Zielsetzung der Arbeit}
+    Die vorliegende Arbeit beschäftigt sich mit der Verwendung von C und C++ in Embedded-Systemen, insbesondere im Automobilbereich. Es soll untersucht werden, weshalb C immer noch die dominierende Programmiersprache in Embedded-Systemen ist und ob C++ eine Alternative darstellt. Dabei sollen die Unterschiede von C und C++ herausgearbeitet und analysiert werden. Es soll herausgefunden werden, ob C++ in Embedded\allowbreak -Systemen sinnvoll ist und welche Vorteile und Nachteile die Programmiersprache gegenüber der gegenwärtig verwendeten hat.\newlineindent
+    Daraus ergibt sich folgende Forschungsfrage: "`Welche Motivation gibt es für die fortgesetzte Verwendung von C anstelle von C++ in Embedded-Systemen, insbesondere im Automobilbereich?"'.\newlineindent
+    Eingeschränkt wird die Arbeit in dem Sinne, dass nicht alle Features der Programmiersprachen vollständig betrachtet werden können. Außerdem werden aufgrund von nicht vorhandener Hardware keine Untersuchungen auf einem für den Embedded-Bereich geeigneten Mikrocontroller und Compiler durchgeführt. Indirektes Zitat.\footcite[Vgl.][S. 1]{Jimenez.2014} Abkürzungen: \ac{zf}.
+
+    \cleardoublepage
+
+    \section*{Quellenverzeichnis}
+    \phantomsection
+    \addcontentsline{toc}{section}{Quellenverzeichnis}
+
+    \subsection*{Literaturquellen}
+    \phantomsection
+    \addcontentsline{toc}{subsection}{Literaturquellen}
+    \printbibliography[filter=papers, heading=none]
+
+    \subsection*{Internetquellen}
+    \phantomsection
+    \addcontentsline{toc}{subsection}{Internetquellen}
+    \printbibliography[type=misc, heading=none]
+
+    % TODO: Interne Quellen als booklet in references.bib einfügen
+    \subsection*{Interne Quellen}
+    \phantomsection
+    \addcontentsline{toc}{subsection}{Interne Quellen}
+    \printbibliography[type=booklet, heading=none]
+
+    \cleardoublepage
+
+    \appendix
+    \section{Anhang}
+
+    \subsection{Datentypen in C}
+    \label{appendix:datatypes-c}
+    Hier können Anhänge eingefügt werden.
+
+    % Acedemic Honesty
+    \include{academic_honesty}
+\end{document}

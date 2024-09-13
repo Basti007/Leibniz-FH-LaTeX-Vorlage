@@ -1,0 +1,143 @@
+% text formatting
+\setmainfont{Arial}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1.5em}
+%\onehalfspacing
+%\linespread{1.3}
+
+% this seems to be exactly what word does
+\setstretch{1.4}
+
+% page style (page number in header)
+\pagestyle{fancy}
+\setlength{\headheight}{15.5pt}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\chead{-\thepage-}
+
+% format and spacing of headings
+\titleformat{\section}{\normalsize\bfseries}{\thesection}{0.5em}{}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.5em}{}{}
+\titlespacing{\section}{0pt}{2em}{2pt}
+\titlespacing{\subsection}{0pt}{2em}{2pt}
+\titlespacing{\subsubsection}{0pt}{2em}{2pt}
+
+% footnote formatting
+\setlength{\skip\footins}{1cm}
+\setlength{\footnotemargin}{0.4cm}
+
+% formatting of toc / lot / lof entries 
+\setlength{\cftbeforesecskip}{0pt}
+\renewcommand{\cfttoctitlefont}{\normalsize\bfseries}
+\renewcommand{\cftloftitlefont}{\normalsize\bfseries}
+\renewcommand{\cftlottitlefont}{\normalsize\bfseries}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\cfttabpresnum}{\bfseries Tabelle  } 
+\renewcommand{\cftfigpresnum}{\bfseries Abb.  }
+\renewcommand{\cftfigaftersnum}{\textbf{:}}
+\renewcommand{\cfttabaftersnum}{\textbf{:}}
+\setlength{\cftfignumwidth}{2cm}							
+\setlength{\cfttabnumwidth}{2,5cm}                                           
+\setlength{\cftfigindent}{0cm}                                                     
+\setlength{\cfttabindent}{0cm}
+
+% Bibliography
+\addbibresource{references.bib}
+% declare formats for biblatex bibliography
+\DeclareFieldFormat[article,periodical]{volume}{\bibstring{jourvol}\addnbspace#1}
+\DeclareFieldFormat[article,periodical]{number}{\bibstring{number}\addnbspace#1}
+\DeclareFieldFormat{journaltitle}{#1\addcomma}
+\DeclareDelimFormat{multinamedelim}{\slash}
+\DeclareDelimAlias{finalnamedelim}{multinamedelim}
+\DeclareNameAlias{sortname}{family-given}
+\DeclareDelimFormat[bib,biblist]{nametitledelim}{\addcolon\space}
+\renewcommand*{\newunitpunct}{\addcomma\space}
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}%
+  \newunit
+  \printfield{number}%
+  \newunit
+  \printfield{eid}%
+}
+\renewbibmacro*{in:}{%
+  \printtext{\bibstring{in}\intitlepunct}%
+  \ifnameundef{bookauthor}
+    {\ifnameundef{editor}
+       {}
+       {\printnames{editor}%
+        \setunit{\space}%
+        \usebibmacro{editor+othersstrg}%
+        \clearname{editor}}}
+    {\ifnamesequal{author}{bookauthor}
+       {}
+       {\printnames{bookauthor}%
+        \clearname{bookauthor}}}%
+\newunit\newblock}
+%hyphenation
+\appto{\bibsetup}{\raggedright}
+
+\DefineBibliographyStrings{ngerman}{ 
+   andothers = {et\addabbrvspace al\adddot},
+   andmore   = {et\addabbrvspace al\adddot},
+}
+
+\DeclareFieldFormat[misc]{title}{\emph{#1} [online]}
+\DeclareFieldFormat[misc]{url}{\url{#1},}
+\DeclareFieldFormat[misc]{urldate}{abgerufen am #1}
+
+\defbibfilter{papers}{
+  type=book or
+  type=incollection or
+  type=article or
+  type=inproceedings or
+  type=proceedings
+}
+
+\AdaptNote\footcite{oo+m}[footnote]{%
+  \setfnpct{dont-mess-around}%
+  \IfNoValueTF{#1}
+    {#NOTE{#3}}
+    {\IfNoValueTF{#2}
+       {#NOTE[#1]{#3}}
+       {#NOTE[#1][#2]{#3}}}}
+
+\usemintedstyle{vs}
+\definecolor{code_bg}{rgb}{0.95,0.95,0.95}
+\setminted[cpp]{bgcolor=code_bg, fontsize=\footnotesize, linenos}
+\setminted[c]{bgcolor=code_bg, fontsize=\footnotesize, linenos}
+\setminted[asm]{bgcolor=code_bg, fontsize=\footnotesize, linenos}
+\setminted[bash]{bgcolor=code_bg, fontsize=\footnotesize}
+
+%\renewcommand{\listingname}{\bfseries Listing}
+%\renewcommand\listoflistingscaption{}
+%\captionsetup{labelformat=empty,labelsep=none}
+%\renewcommand{\listingscaption}{Codebeispiel}
+%\newcommand*{\listingautorefname}{Codebeispiel}
+
+\renewcommand{\arraystretch}{1.8}
+
+\newcommand{\newlineindent}{\newline\hspace*{1em}}
+
+%\setlist[description]{leftmargin=-2em,labelindent=-2.5em}
+\setlist[description]{leftmargin=0em, labelindent=0em, itemsep=1em, labelsep=1em}
+
+\newcommand{\bswInterviewCite}[1]{\footcite[Vgl.][Gespräch am 29.04.2024, \appendixautorefname{ S. \pageref{#1}}]{zf.bsw.interview}}
+\newcommand{\toolsInterviewCite}[1]{\footcite[Vgl.][Gespräch am 29.04.2024, \appendixautorefname{ S. \pageref{#1}}]{zf.tools.interview}}
+
+\newcommand{\paragraphnl}[1]{\paragraph{#1}\mbox{}\\}
+
+\newenvironment{code}{\captionsetup{type=listing}}{}
+\SetupFloatingEnvironment{listing}{%
+    name={Quellcode},
+    fileext=lol}
+
+\renewcommand{\cftlistingpresnum}{\bfseries Quellcode~}
+\renewcommand{\cftlistingaftersnum}{\textbf{:}}
+\setlength{\cftlistingnumwidth}{3cm}
+
+\hyphenation{Em-bed-ded--Sys-tem}
+\hyphenation{Em-bed-ded--Sys-te-men}
