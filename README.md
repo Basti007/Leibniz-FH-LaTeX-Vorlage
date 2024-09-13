@@ -11,3 +11,4 @@ Projekt mit VSCode öffnen (Rechtsklick auf Ordner und `Mit Code öffnen` oder K
 
 # Support
 E-Mail: sebastian.scholz@sw-it-solutions.de
+> **Hinweis:** Bitte beachte, dass die angegebene Support-E-Mail möglicherweise nicht umgehend beantwortet wird, da es sich hierbei nicht um eine dringende Angelegenheit handelt. Vielen Dank für das Verständnis.
